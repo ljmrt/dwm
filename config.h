@@ -15,7 +15,7 @@ static const char col_cyan[]        = "#005577";
 static const char col_second[]      = "#602c94";
 
 static const char fg[]          = "#dcd8c0";
-static const char bg[]          = "#b4af9a";
+static const char bg[]          = "#bab5a1";
 static const char acc[]         = "#454138";
 static const char fg1[]         = "#282828";
 static const char bg1[]         = "#f2e5bc";
