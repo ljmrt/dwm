@@ -72,7 +72,7 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=/home/lucas/.config/bemenu BEMENU_RENDERERS=/home/lucas/.config/bemenu bemenu-run -p bemenu -B 1 -P -- -b --fn \"Anonymous Pro 11\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#dcd8c0\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
+	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=/home/lucas/.config/bemenu BEMENU_RENDERERS=/home/lucas/.config/bemenu bemenu-run -p bemenu -B 1 -P -- -b --fn \"Anonymous Pro 11\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
