@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "AnonymousPro:size=12" };
+static const char *fonts[]          = { "AnonymousPro:size=6" };
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "nil", "edit", "www", "doc", "misc" };
+static const char *tags[] = { "nil", "edit", "www", "com", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -34,11 +34,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title                      tags mask     isfloating   monitor */
-	{ NULL,       NULL,       "GNU Image",               1 << 4,            0,           -1 },
+	{ NULL,       NULL,       "GNU Image",               1 << 1,            0,           -1 },
 	{ NULL,       NULL,       "Mozilla Firefox",         1 << 2,            0,           -1 },
     { NULL,       NULL,       "GNU Emacs",               1 << 1,            0,           -1 },
-    { NULL,       NULL,       "LibreOffice",             1 << 3,            0,           -1 },
+    { NULL,       NULL,       "LibreOffice",             1 << 1,            0,           -1 },
     { NULL,       NULL,       "NVIDIA X Server",         1 << 4,            0,           -1 }
+    // email/chat/irc client on tag #4(1 << 3)
 };
 
 /* layout(s) */
@@ -50,11 +51,11 @@ static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen win
 #include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "dwi",      dwindle},
-	{ "til",      tile },    /* first entry is default */
-	{ "flo",      NULL },    /* no layout function means floating behavior */
-	{ "mon",      monocle },
-	{ "spr",      spiral },
+	{ "&",      dwindle},
+	{ "-",      tile },    /* first entry is default */
+	{ "*",      NULL },    /* no layout function means floating behavior */
+	{ ".",      monocle },
+	{ "@",      spiral },
 };
 
 /* key definitions */
