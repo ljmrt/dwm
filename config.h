@@ -26,16 +26,19 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+static const char *tags[] = { "nil", "edit", "www", "doc", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance    title                      tags mask     isfloating   monitor */
+	{ NULL,       NULL,       "GNU Image",               1 << 4,            0,           -1 },
+	{ NULL,       NULL,       "Mozilla Firefox",         1 << 2,            0,           -1 },
+    { NULL,       NULL,       "GNU Emacs",               1 << 1,            0,           -1 },
+    { NULL,       NULL,       "LibreOffice",             1 << 3,            0,           -1 },
+    { NULL,       NULL,       "NVIDIA X Server",         1 << 4,            0,           -1 }
 };
 
 /* layout(s) */
