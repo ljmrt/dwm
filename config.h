@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "AnonymousPro:size=6" };
+static const char *fonts[]          = { "AnonymousPro:size=12" };
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -38,7 +38,10 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Mozilla Firefox",         1 << 2,            0,           -1 },
     { NULL,       NULL,       "GNU Emacs",               1 << 1,            0,           -1 },
     { NULL,       NULL,       "LibreOffice",             1 << 1,            0,           -1 },
-    { NULL,       NULL,       "NVIDIA X Server",         1 << 4,            0,           -1 }
+    { NULL,       NULL,       "NVIDIA Settings",         1 << 4,            0,           -1 },
+    { NULL,       NULL,       "Audacity",                1 << 4,            0,           -1 },
+    { NULL,       NULL,       "st",                      0,                 0,           -1 },
+    { NULL,       NULL,       "Volume Control",          0,                 0,           -1 }
     // email/chat/irc client on tag #4(1 << 3)
 };
 
@@ -75,7 +78,7 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=/home/lucas/.config/bemenu BEMENU_RENDERERS=/home/lucas/.config/bemenu bemenu-run -p bemenu -B 1 -P -- -M 100 -c --fn \"Anonymous Pro 11\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
+	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=/home/lucas/builds/bemenu BEMENU_RENDERERS=/home/lucas/builds/bemenu bemenu-run -p bemenu -B 1 -P -- -M 100 -c --fn \"Anonymous Pro 12\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
