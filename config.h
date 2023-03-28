@@ -43,7 +43,8 @@ static const Rule rules[] = {
     { NULL,       NULL,       "st",                      0,                 0,           -1 },
     { NULL,       NULL,       "Volume Control",          0,                 0,           -1 },
     { NULL,       NULL,       "Steam",                   1 << 4,            0,           -1 },
-    { NULL,       NULL,       "Minecraft Launcher",      1 << 4,            0,           -1 }
+    { NULL,       NULL,       "Minecraft Launcher",      1 << 4,            0,           -1 },
+    { NULL,       NULL,       "Lutris",                  1 << 4,            0,           -1 }
     // email/chat/irc client on tag #4(1 << 3)
 };
 
