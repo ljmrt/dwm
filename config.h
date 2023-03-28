@@ -38,10 +38,12 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Mozilla Firefox",         1 << 2,            0,           -1 },
     { NULL,       NULL,       "GNU Emacs",               1 << 1,            0,           -1 },
     { NULL,       NULL,       "LibreOffice",             1 << 1,            0,           -1 },
-    { NULL,       NULL,       "NVIDIA Settings",         1 << 4,            0,           -1 },
-    { NULL,       NULL,       "Audacity",                1 << 4,            0,           -1 },
+    { NULL,       NULL,       "NVIDIA Settings",         1 << 1,            0,           -1 },
+    { NULL,       NULL,       "Audacity",                1 << 1,            0,           -1 },
     { NULL,       NULL,       "st",                      0,                 0,           -1 },
-    { NULL,       NULL,       "Volume Control",          0,                 0,           -1 }
+    { NULL,       NULL,       "Volume Control",          0,                 0,           -1 },
+    { NULL,       NULL,       "Steam",                   1 << 4,            0,           -1 },
+    { NULL,       NULL,       "Minecraft Launcher",      1 << 4,            0,           -1 }
     // email/chat/irc client on tag #4(1 << 3)
 };
 
