@@ -69,8 +69,8 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|Mod1Mask,              KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|Mod1Mask,  KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -90,32 +90,29 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_r,      reorganizetags, {0} },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY|Mod1Mask,              XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_x,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_6,      view,           {.ui = ~0 } },
+	{ MODKEY|Mod1Mask,              XK_6,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_ampersand,              0)
-	TAGKEYS(                        XK_bracketleft,            1)
-	TAGKEYS(                        XK_braceleft,              2)
-	TAGKEYS(                        XK_braceright,             3)
-	TAGKEYS(                        XK_parenleft,              4)
-	TAGKEYS(                        XK_equal,                  5)
-	TAGKEYS(                        XK_asterisk,               6)
-	TAGKEYS(                        XK_parenright,             7)
-	TAGKEYS(                        XK_plus,                   8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|Mod1Mask,              XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_period, tagmon,         {.i = +1 } },
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_5,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_1,                      3)
+	TAGKEYS(                        XK_9,                      4)
+	TAGKEYS(                        XK_0,                      5)
+	{ MODKEY|Mod1Mask,              XK_q,      quit,           {0} },
 };
 
 /* button definitions */
