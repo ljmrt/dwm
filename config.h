@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "AnonymousPro:size=12" };
+static const char *fonts[]          = { "AnonymousPro:size=6" };
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -81,7 +81,7 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=/home/lucas/builds/bemenu BEMENU_RENDERERS=/home/lucas/builds/bemenu bemenu-run -p bemenu -B 1 -P -- -M 100 -c --fn \"Anonymous Pro 12\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
+	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH bemenu-run -p bemenu -B 1 -P -- -M 100 -c --fn \"Anonymous Pro 12\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -106,12 +106,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,              XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_7,                      0)
-	TAGKEYS(                        XK_5,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_1,                      3)
-	TAGKEYS(                        XK_9,                      4)
-	TAGKEYS(                        XK_0,                      5)
+	TAGKEYS(                        XK_ampersand,              0)
+	TAGKEYS(                        XK_bracketleft,            1)
+	TAGKEYS(                        XK_braceleft,              2)
+	TAGKEYS(                        XK_braceright,             3)
+	TAGKEYS(                        XK_parenleft,              4)
+	TAGKEYS(                        XK_equal,                  5)
 	{ MODKEY|Mod1Mask,              XK_q,      quit,           {0} },
 };
 
