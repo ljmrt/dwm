@@ -59,7 +59,6 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -216,6 +215,8 @@ static void togglefloating(const Arg *arg);
 static void togglesticky(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
+static void themeread(void);
+static void toggletheme(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
 static void unmanage(Client *c, int destroyed);
 static void unmapnotify(XEvent *e);
@@ -266,6 +267,7 @@ static Atom wmatom[WMLast], netatom[NetLast];
 static int running = 1;
 static Cur *cursor[CurLast];
 static Clr **scheme;
+static int SchemeNorm = 0, SchemeSel = 1;
 static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
@@ -1760,6 +1762,48 @@ toggleview(const Arg *arg)
 }
 
 void
+themeread(void)
+{
+    char *raw_theme_path = getenv("THEME_PATH");
+    if (raw_theme_path == NULL) printf("null theme path\n");
+    
+    char path_buffer[strlen(raw_theme_path) + 12];
+    strcpy(path_buffer, raw_theme_path);
+    strcat(path_buffer, "theme.value");
+    
+    FILE *fp = fopen(path_buffer, "rb");
+    if (fp == NULL) printf("null file\n");
+    
+    fseek(fp, 0, SEEK_END);
+    long fsize = ftell(fp);
+    fseek(fp, 0, SEEK_SET);  // Same as rewind(f);
+
+    char *data_buffer = malloc(fsize + 1);
+    int ret = fread(data_buffer, fsize, 1, fp);
+    if (ret != 1) printf("fread failure\n");
+
+    unsigned int theme_selection = atoi(data_buffer);
+    fclose(fp);
+
+    SchemeNorm = (theme_selection * 2);
+    SchemeSel = (SchemeNorm + 1);
+    
+    drawbars();
+}
+
+void
+toggletheme(const Arg *arg)
+{
+    SchemeNorm += 2;
+    SchemeSel += 2;
+    
+    if (SchemeNorm > 2) SchemeNorm = 0;
+    if (SchemeSel > 3) SchemeSel = 1;
+    
+    drawbars();
+}
+
+void
 unfocus(Client *c, int setfocus)
 {
 	if (!c)
@@ -2155,6 +2199,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
+    themeread();
 	run();
 	cleanup();
 	XCloseDisplay(dpy);

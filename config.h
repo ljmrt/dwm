@@ -5,24 +5,26 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "AnonymousPro:size=6" };
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_second[]      = "#602c94";
+static const char *fonts[]          = { "Proggy Vector Dotted:size=6" };
 
-static const char fg[]          = "#dcd8c0";
-static const char bg[]          = "#bab5a1";
-static const char acc[]         = "#454138";
-static const char fg1[]         = "#282828";
-static const char bg1[]         = "#f2e5bc";
-static const char acc1[]        = "#d79921";
+static const char fg_light[]          = "#000000";
+static const char bg_light[]          = "#ffffff";
+static const char bor_light[]         = "#595959";
+static const char bor_sel_light[]     = "#595959";
+
+static const char fg_dark[]          = "#ffffff";
+static const char bg_dark[]          = "#000000";
+static const char bor_dark[]         = "#595959";
+static const char bor_sel_dark[]     = "#595959";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = {acc,bg,fg},
-	[SchemeSel]  = {fg,acc,acc},
+    //              fg     bg     bor
+    // [SchemeNorm]
+    // [SchemeSel]
+	{fg_light,    bg_light,    bor_light},      // SchemeNorm light
+	{bg_light,    fg_light,    bor_sel_light},  // SchemeSel  light
+    {fg_dark,     bg_dark,     bor_dark},       // SchemeNorm dark
+	{bg_dark,     fg_dark,     bor_sel_dark},   // SchemeSel  dark
 };
 
 /* tagging */
@@ -77,12 +79,32 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *termcmd[]  = { "st", NULL };
+static const char *bemenu_cmd[] = { "/bin/sh", "-c", "\
+LD_LIBRARY_PATH=/home/lucas/programming/foss/bemenu BEMENU_RENDERERS=/home/lucas/programming/foss/bemenu \
+/home/lucas/programming/foss/bemenu/bemenu-run -p bemenu \
+--fn \"Proggy Vector Dotted 12\" \
+--border 2 --prefix -- --margin 100 \
+--center --fixed-height --counter always --list \"10 up\" \
+--single-instance \
+--tb \"#000000\" --tf \"#ffffff\" \
+--fb \"#ffffff\" --ff \"#000000\" \
+--nb \"#ffffff\" --nf \"#000000\" \
+--hb \"#ffffff\" --hf \"##005e8b\" \
+--fbb \"#ffffff\" --fbf \"#000000\" \
+--sb \"#ffffff\" --sf \"#000000\" \
+--ab \"#ffffff\" --af \"#000000\" \
+--scb \"#ffffff\" --scf \"#000000\" \
+--bdr \"#000000\"",
+                                    NULL };
+static const char *toggle_theme_cmd[] = { "/bin/sh", "-c", "/usr/bin/theme_toggle", NULL };
 
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          SHCMD("LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH bemenu-run -p bemenu -B 1 -P -- -M 100 -c --fn \"Anonymous Pro 12\" --fixed-height --counter always --tb \"#454138\" --tf \"#dcd8c0\" --fb \"#bab5a1\" --ff \"#454138\" --nb \"#bab5a1\" --nf \"#454138\" --hb \"#bab5a1\" --hf \"#ce664d\" -fbb \"#bab5a1\"--fbf \"#4541348\" --sb \"#bab5a1\" --sf \"#454138\" --ab \"#bab5a1\" --af \"#454138\" --scb \"#bab5a1\" --scf \"#454138\" --bdr \"#454138\" -l 10") },
+    { MODKEY,                       XK_space,  spawn,          {.v = bemenu_cmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_c,      spawn,          {.v = toggle_theme_cmd } },
+    { MODKEY,                       XK_c,      toggletheme,    {0} },
 	{ MODKEY,                       XK_y,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
