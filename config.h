@@ -5,7 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Proggy Vector Dotted:size=6" };
+static const char *fonts[]          = { "Proggy Vector Dotted:size=12" };
 
 static const char fg_light[]          = "#000000";
 static const char bg_light[]          = "#ffffff";
@@ -80,8 +80,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *termcmd[]  = { "st", NULL };
 static const char *bemenu_cmd[] = { "/bin/sh", "-c", "\
-LD_LIBRARY_PATH=/home/lucas/programming/foss/bemenu BEMENU_RENDERERS=/home/lucas/programming/foss/bemenu \
-/home/lucas/programming/foss/bemenu/bemenu-run -p bemenu \
+LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH \
+$BEMENU_PATH/bemenu-run -p bemenu \
 --fn \"Proggy Vector Dotted 12\" \
 --border 2 --prefix -- --margin 100 \
 --center --fixed-height --counter always --list \"10 up\" \
@@ -128,12 +128,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|Mod1Mask,              XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|Mod1Mask,              XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_ampersand,              0)
-	TAGKEYS(                        XK_bracketleft,            1)
-	TAGKEYS(                        XK_braceleft,              2)
-	TAGKEYS(                        XK_braceright,             3)
-	TAGKEYS(                        XK_parenleft,              4)
-	TAGKEYS(                        XK_equal,                  5)
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_5,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_1,                      3)
+	TAGKEYS(                        XK_9,                      4)
+	TAGKEYS(                        XK_0,                      5)
 	{ MODKEY|Mod1Mask,              XK_q,      quit,           {0} },
 };
 
